@@ -5,15 +5,9 @@ from .forms import NameForm
 
 
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/')
 def index():
-	form = NameForm()
-	if form.validate_on_submit():
+    return render_template('index.html')
 
-		return redirect(url_for('.index'))
-	else:
-		pass
-	return render_template('index.html',
-				form=form, name=session.get('name'),
-				known=session.get('known', False),
-				current_time=datetime.utcnow())
+
+
